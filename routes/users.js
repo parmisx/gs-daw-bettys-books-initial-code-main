@@ -57,22 +57,22 @@ router.get('/login', function (req, res, next) {
 
 router.post('/loggedin', function(req,res,next){
     const username = req.body.username;
-
-    let sqlquery = "SELECT hashedPassword FROM users WHERE username = ?";
-
+    let sqlquery = "SELECT hashedPassword FROM users WHERE username = ?"; // query database to get the hashed password with the username
+    // execute sql query
     db.query(sqlquery, [username], (err, result) => {
         if(err){
             next(err);
-        } else if(result.length == 0){
+        } else if(result.length == 0){ // error if username does not exist
             res.send("Login failed: User not found! please try again.");
         } else{
+            // comparing the password with the hashed passwords
             const hashedPassword = result[0].hashedPassword;
             bcrypt.compare(req.body.password, hashedPassword, function(err,result){
                 if(err){
                     next(err);
-                } else if(result == true){
+                } else if(result == true){ // login with right username and password
                     res.send(username + ", you are now logged in!");
-                } else{
+                } else{ // error if password is wrong but username is right
                     res.send("Login failed: Wrong password! please try again.")
                 }
             });

@@ -52,5 +52,9 @@ router.get('/list', function(req, res, next) {
      })
 })
 
+router.get('/login', function (req, res, next) {
+    res.render('login.ejs')                                                               
+}) 
+
 // Export the router object so index.js can access it
 module.exports = router

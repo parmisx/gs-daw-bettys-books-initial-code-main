@@ -5,6 +5,14 @@ const router = express.Router()
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
+const redirectLogin = (req, res, next) => {
+    if(!req.session.userId){
+        res.redirect('./login') // redirect to the login page
+    } else{
+        next(); // move to the next middleware function
+    }
+}
+
 router.get('/register', function (req, res, next) {
     res.render('register.ejs')                                                               
 })    
@@ -40,7 +48,7 @@ router.post('/registered', function (req, res, next) {
     });
 });
 
-router.get('/list', function(req, res, next) {
+router.get('/list', redirectLogin, function(req, res, next) {
     let sqlquery = "SELECT * FROM users" // query database to get all the users
     // execute sql query
     db.query(sqlquery, (err, result) => {
@@ -71,6 +79,7 @@ router.post('/loggedin', function(req,res,next){
                 if(err){
                     next(err);
                 } else if(result == true){ // login with right username and password
+                    req.session.userId = req.body.username; // save user session here, when login is successful
                     res.send(username + ", you are now logged in!");
                 } else{ // error if password is wrong but username is right
                     res.send("Login failed: Wrong password! please try again.")

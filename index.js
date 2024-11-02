@@ -10,6 +10,13 @@ const app = express()
 const port = 8000
 
 var session = require('express-session')
+
+var validator = require('express-validator')
+
+// create an input sanitizer
+const expressSanitizer = require('express-sanitizer');
+app.use(expressSanitizer());
+
 // create a sessiion
 app.use(session({
     secret: 'somerandomstuff',

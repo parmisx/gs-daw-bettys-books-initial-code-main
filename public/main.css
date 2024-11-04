@@ -1,13 +1,13 @@
 h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
-    color: darkcyan;
+    color: #6666ff;
 }
 
 h2 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
-    color: cadetblue;
+    color: #8d8dff;
 }
 
 p,li {
@@ -15,14 +15,14 @@ p,li {
 }
 
 a:link {
-    color: orangered;
+    color: #000000;
     text-decoration: none;
     padding:5px;
   }
   
   /* visited link */
   a:visited {
-    color: tomato;
+    color: #000000;;
     text-decoration: none;
     padding:5px;
   }
@@ -31,7 +31,7 @@ a:link {
   a:hover {
     color: white;
     text-decoration: none;
-    background-color: orangered;
+    background-color: #000000;;
     padding:5px;
   }
   
@@ -40,4 +40,31 @@ a:link {
     color: blue;
     text-decoration: none;
     padding:5px;
+  }
+
+  /* the  background colour */
+  body {
+    background-color: #ccccff;
+  }
+
+  /* form styling */
+  form {
+    margin: 20px;
+    padding: 5px;
+    border: none;
+  }
+
+  input{
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0px 0px 5px #777777;
+    background: #f2f2ff;
+    width: 200px;
+    height: 20px;
+  }
+  .button{
+    width: 80px;
+    height: 30px;
+    background: #6666ff;
   }

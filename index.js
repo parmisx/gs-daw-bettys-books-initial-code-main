@@ -67,5 +67,9 @@ app.use('/users', usersRoutes)
 const booksRoutes = require('./routes/books')
 app.use('/books', booksRoutes)
 
+// load the route handlers for weather
+const weatherRoutes = require('./routes/weather')
+app.use('/', weatherRoutes)
+
 // Start the web app listening
 app.listen(port, () => console.log(`Node app listening on port ${port}!`))

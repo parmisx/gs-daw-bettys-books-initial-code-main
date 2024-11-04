@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Weather Forecast</title>
+    <link rel="stylesheet"  type="text/css" href="/main.css" />
+  </head>
+  <body>
+    <h1><%=shopData.shopName%> Shop</h1>
+    <h2>The weather forecast for different cities</h2>
+    <p><a href="/londonnow">London right now</a></p>
+
+    <form action="/weather" method="POST">
+      <p>Search for other cities:</p>
+      <input id="weather_search" type="text" name="city_search" required>
+      <input type="submit" value="Search">
+    </form>
+    
+    <% if (weatherForecast) { %>
+      <p>Weather in <%= weatherForecast.name %> is...</p>
+      <p>The temperature is: <%= weatherForecast.temp %> degrees</p>
+      <p>The humidity is: <%= weatherForecast.humidity %></p>
+      <p>The wind speed is: <%= weatherForecast.wind %></p>
+      <p>The time is: <%= weatherForecast.timezoneDisplay %></p>
+      <% } %>
+
+    </body>
+</html>

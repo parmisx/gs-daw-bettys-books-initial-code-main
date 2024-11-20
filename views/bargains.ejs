@@ -9,7 +9,7 @@
     <h2>Here are our bargain books:</h2>
     <ul>
       <% availableBooks.forEach(function(book) { %>
-        <li><%= book.name %>, £<%=book.price%> </li>
+        <li><%= book.name %>, £<%=book.price%>, By: <%= book.author_id %></li>
       <% }) %>
     </ul>
     </body>
